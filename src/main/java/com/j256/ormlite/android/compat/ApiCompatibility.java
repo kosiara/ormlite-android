@@ -1,7 +1,7 @@
 package com.j256.ormlite.android.compat;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabase;
 
 /**
  * Compatibility interface to support various different versions of the Android API.
@@ -17,7 +17,7 @@ public interface ApiCompatibility {
 
 	/**
 	 * Return a cancellation hook object that will be passed to the
-	 * {@link #rawQuery(SQLiteDatabase, String, String[], CancellationHook)}. If not supported then this will return
+	 * {@link #rawQuery(net.sqlcipher.database.SQLiteDatabase, String, String[], CancellationHook)}. If not supported then this will return
 	 * null.
 	 */
 	public CancellationHook createCancellationHook();

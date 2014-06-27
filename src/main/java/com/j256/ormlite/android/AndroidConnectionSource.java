@@ -1,11 +1,5 @@
 package com.j256.ormlite.android;
 
-import java.sql.SQLException;
-
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-
-import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.db.DatabaseType;
 import com.j256.ormlite.db.SqliteAndroidDatabaseType;
 import com.j256.ormlite.logger.Logger;
@@ -15,10 +9,15 @@ import com.j256.ormlite.support.BaseConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.support.DatabaseConnection;
 import com.j256.ormlite.support.DatabaseConnectionProxyFactory;
+import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteOpenHelper;
+import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
+
+import java.sql.SQLException;
 
 /**
- * Android version of the connection source. Takes a standard Android {@link SQLiteOpenHelper}. For best results, use
- * {@link OrmLiteSqliteOpenHelper}. You can also construct with a {@link SQLiteDatabase}.
+ * Android version of the connection source. Takes a standard Android {@link net.sqlcipher.database.SQLiteOpenHelper}. For best results, use
+ * {@link OrmLiteSqliteOpenHelper}. You can also construct with a {@link net.sqlcipher.database.SQLiteDatabase}.
  * 
  * @author kevingalligan, graywatson
  */
@@ -33,10 +32,12 @@ public class AndroidConnectionSource extends BaseConnectionSource implements Con
 	private final DatabaseType databaseType = new SqliteAndroidDatabaseType();
 	private static DatabaseConnectionProxyFactory connectionProxyFactory;
 	private boolean cancelQueriesEnabled = false;
+    private String databasePassword;
 
-	public AndroidConnectionSource(SQLiteOpenHelper helper) {
+	public AndroidConnectionSource(SQLiteOpenHelper helper, String databasePassword) {
 		this.helper = helper;
 		this.sqliteDatabase = null;
+        this.databasePassword = databasePassword;
 	}
 
 	public AndroidConnectionSource(SQLiteDatabase sqliteDatabase) {
@@ -63,7 +64,7 @@ public class AndroidConnectionSource extends BaseConnectionSource implements Con
 			SQLiteDatabase db;
 			if (sqliteDatabase == null) {
 				try {
-					db = helper.getWritableDatabase();
+					db = helper.getWritableDatabase(databasePassword);
 				} catch (android.database.SQLException e) {
 					throw SqlExceptionUtil.create("Getting a writable database from helper " + helper + " failed", e);
 				}

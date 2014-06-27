@@ -1,8 +1,9 @@
 package com.j256.ormlite.android.compat;
 
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+import android.database.SQLException;
 import android.os.CancellationSignal;
+import net.sqlcipher.database.SQLiteDatabase;
 
 /**
  * Basic class which provides no-op methods for all Android version.
@@ -20,7 +21,7 @@ public class JellyBeanApiCompatibility extends BasicApiCompatibility {
 		if (cancellationHook == null) {
 			return db.rawQuery(sql, selectionArgs);
 		} else {
-			return db.rawQuery(sql, selectionArgs, ((JellyBeanCancellationHook) cancellationHook).cancellationSignal);
+			throw new SQLException("CancellationHook is currently not supported");
 		}
 	}
 

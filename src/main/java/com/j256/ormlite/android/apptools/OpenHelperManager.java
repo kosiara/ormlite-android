@@ -1,17 +1,15 @@
 package com.j256.ormlite.android.apptools;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
-
 import android.content.Context;
 import android.content.res.Resources;
-import android.database.sqlite.SQLiteOpenHelper;
-
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.logger.Logger;
 import com.j256.ormlite.logger.LoggerFactory;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 /**
  * This helps organize and access database connections to optimize connection sharing. There are several schemes to
@@ -23,7 +21,7 @@ import com.j256.ormlite.logger.LoggerFactory;
  * connection. The helper instance will be kept in a static field and only released once its internal usage count goes
  * to 0.
  * 
- * The {@link SQLiteOpenHelper} and database classes maintain one connection under the hood, and prevent locks in the
+ * The {@link net.sqlcipher.database.SQLiteOpenHelper} and database classes maintain one connection under the hood, and prevent locks in the
  * java code. Creating multiple connections can potentially be a source of trouble. This class shares the same
  * connection instance between multiple clients, which will allow multiple activities and services to run at the same
  * time.

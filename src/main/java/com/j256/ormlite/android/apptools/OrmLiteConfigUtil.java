@@ -1,21 +1,5 @@
 package com.j256.ormlite.android.apptools;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.lang.reflect.Field;
-import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.db.DatabaseType;
 import com.j256.ormlite.db.SqliteAndroidDatabaseType;
@@ -25,6 +9,14 @@ import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.j256.ormlite.table.DatabaseTableConfig;
 import com.j256.ormlite.table.DatabaseTableConfigLoader;
+
+import java.io.*;
+import java.lang.reflect.Field;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Database configuration file helper class that is used to write a configuration file into the raw resource
@@ -41,7 +33,7 @@ import com.j256.ormlite.table.DatabaseTableConfigLoader;
  * I added this utility class which writes a configuration file into the raw resource "res/raw" directory inside of your
  * project containing the table and field names and associated details. This file can then be loaded into the
  * {@link DaoManager} with the help of the
- * {@link OrmLiteSqliteOpenHelper#OrmLiteSqliteOpenHelper(android.content.Context, String, android.database.sqlite.SQLiteDatabase.CursorFactory, int, int)}
+ * {@link OrmLiteSqliteOpenHelper#OrmLiteSqliteOpenHelper(android.content.Context, String, net.sqlcipher.database.SQLiteDatabase.CursorFactory, int, int, String)}
  * constructor. This means that you can configure your classes _without_ any runtime calls to annotations. It seems
  * significantly faster.
  * <p>
