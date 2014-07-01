@@ -3,10 +3,10 @@
 	<!-- ormlite configuration file for Maven (http://maven.apache.org/) -->
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.j256.ormlite</groupId>
-	<artifactId>ormlite-android</artifactId>
+	<artifactId>ormlite-android-sqlcipher</artifactId>
 	<version>4.48</version>
 	<packaging>jar</packaging>
-	<name>ORMLite Android</name>
+	<name>ORMLite Android with SQLCipher</name>
 	<url>http://ormlite.sourceforge.net/</url>
 	<description>Lightweight Object Relational Model (ORM) Android classes</description>
 	<licenses>
@@ -73,7 +73,7 @@
 		</profile>
 	</profiles>
 	<build>
-		<finalName>ormlite-android</finalName>
+		<finalName>ormlite-android-sqlcipher</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
@@ -258,6 +258,7 @@
 		<junit-version>4.8.1</junit-version>
 		<log4j-version>1.2.15</log4j-version>
 		<ormlite-version>${project.version}</ormlite-version>
+		<sqlcipher-version>3.1.0</sqlcipher-version>
 	</properties>
 	<dependencies>
 		<!-- =================================================================== -->
@@ -273,6 +274,13 @@
 			<scope>provided</scope>
 			<version>${android-version}</version>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+		  <groupId>net.sqlcipher</groupId>
+		  <artifactId>sqlcipher</artifactId>
+		  <version>3.1.0</version>
+		  <systemPath>${basedir}/libs/sqlcipher.jar</systemPath>
+		  <scope>system</scope>
 		</dependency>
 		<!-- =================================================================== -->
 		<!-- test dependencies -->

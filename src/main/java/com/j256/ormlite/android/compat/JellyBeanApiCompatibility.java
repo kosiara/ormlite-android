@@ -1,8 +1,8 @@
 package com.j256.ormlite.android.compat;
 
-import android.database.Cursor;
 import android.database.SQLException;
 import android.os.CancellationSignal;
+import net.sqlcipher.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 
 /**

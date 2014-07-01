@@ -1,6 +1,5 @@
 package com.j256.ormlite.android;
 
-import android.database.Cursor;
 import com.j256.ormlite.android.compat.ApiCompatibility;
 import com.j256.ormlite.android.compat.ApiCompatibility.CancellationHook;
 import com.j256.ormlite.android.compat.ApiCompatibilityUtils;
@@ -12,6 +11,7 @@ import com.j256.ormlite.misc.SqlExceptionUtil;
 import com.j256.ormlite.stmt.StatementBuilder.StatementType;
 import com.j256.ormlite.support.CompiledStatement;
 import com.j256.ormlite.support.DatabaseResults;
+import net.sqlcipher.Cursor;
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteStatement;
 
